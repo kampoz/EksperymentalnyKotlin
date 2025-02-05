@@ -1,27 +1,27 @@
 package org.example
 
-
 /**
- * this function converts ints to roman numerals in recursive way
+ * this function converts Ints to roman numerals in recursive way
  *
  * @cache - needed only for caching during recursion, do not use
  * */
 fun Int.toRoman(cache: String = ""): String {
     var result = cache
-    var number = this
+    var number: Int = this
     return if (number == 0) {
         result
     } else {
-        for (i in numbersPairs.indices) {
-            if (number - numbersPairs[i].first >= 0) {
-                result += numbersPairs[i].second
-                number -= numbersPairs[i].first
+        for ((key, value) in numbersPairs) {
+            if ((number - key) >= 0) {
+                result += value
+                number -= key
                 break
             }
         }
         number.toRoman(result)
     }
 }
+
 
 private val numbersPairs = listOf(
     Pair(1000, "M"),
@@ -38,3 +38,8 @@ private val numbersPairs = listOf(
     Pair(4, "IV"),
     Pair(1, "I")
 )
+
+//private val numbersPairs: LinkedHashMap<Int, String> = linkedMapOf(
+//    1000 to "M", 900 to "CM", 500 to "D", 400 to "CD",
+//    100 to "C", 90 to "XC", 50 to "L", 40 to "XL",
+//    10 to "X", 9 to "IX", 5 to "V", 4 to "IV", 1 to "I")
