@@ -6,6 +6,10 @@ package org.example
  * @cache - needed only for caching during recursion, do not use
  * */
 fun Int.toRoman(cache: String = ""): String {
+    if (this < 1) {
+        return "Wrong argument!"
+    }
+
     var result = cache
     var number: Int = this
     return if (number == 0) {

@@ -23,7 +23,17 @@ class RomanNumeralsKtTest {
         assertEquals("CCIV", 204.toRoman())
         assertEquals("CMXCIX", 999.toRoman())
         assertEquals("MMMMCDXLIV", 4444.toRoman())
+        assertEquals("MMMMCMXLIX", 4949.toRoman())
+        assertEquals("MMMMMMMMMCDXCIV", 9494.toRoman())
         assertEquals("MMMMMMMMMCMXCIX", 9999.toRoman())
+    }
+
+    @Test
+    fun `test wrong arguments`() {
+        assertEquals(wrongArgumentText, (-1).toRoman())
+        assertEquals(wrongArgumentText, 0.toRoman())
     }
 }
 
+
+const val wrongArgumentText = "Wrong argument!"
